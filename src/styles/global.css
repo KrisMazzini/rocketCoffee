@@ -1,5 +1,5 @@
 :root {
-    --backgrond: #000;
+    --background: #000;
     --text-color: #FFF;
     --button: #8257E5;
     --blur: #996DFF;
@@ -14,5 +14,5 @@ html * {
 }
 
 body {
-    background-color: var(--backgrond);
+    background-color: var(--background);
 }

@@ -15,6 +15,7 @@ export const Button = styled.button`
     letter-spacing: 0.02em;
 
     background-color: #fff0;
+    color: var(--text-color);
 
     :hover {
         background-color: var(--button);
