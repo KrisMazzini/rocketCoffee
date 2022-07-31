@@ -6,4 +6,8 @@ export const Container = styled.div`
     
     position: fixed;
     z-index: 2;
+
+    header {
+        margin-top: 50px;
+    }
 `
