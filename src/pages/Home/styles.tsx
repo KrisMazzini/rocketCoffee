@@ -5,6 +5,14 @@ type BlurProps = {
     reverseAnimation: boolean;
 }
 
+export const Container = styled.div`
+    width: 100vw;
+    min-height: 100vh;
+    
+    position: fixed;
+    z-index: 2;
+`
+
 export const Blur = styled.div`
     width: 321px;
     height: 321px;
