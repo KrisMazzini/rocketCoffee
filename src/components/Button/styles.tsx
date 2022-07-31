@@ -22,6 +22,7 @@ export const Button = styled.button`
     }
 
     :active {
-        filter: brightness(0.8)
+        filter: brightness(0.8);
+        transition: none;
     }
 `
