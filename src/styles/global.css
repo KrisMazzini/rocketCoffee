@@ -2,6 +2,7 @@
     --backgrond: #000;
     --text-color: #FFF;
     --button: #8257E5;
+    --blur: #996DFF;
     --border: #29292E;
     --border-menu-mobile: #A8A8B3;
     --text-color-menu-mobile: #E1E1E6;
@@ -10,4 +11,8 @@
 html * {
     box-sizing: border-box;
     font-family: 'Manrope', sans-serif;
+}
+
+body {
+    background-color: var(--backgrond);
 }
