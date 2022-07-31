@@ -42,12 +42,12 @@ export function NavMenu() {
     return(
         <Container>
             {
-                isMobile ? <div>
-                    <img src={menuIcon.src} alt="icon" onClick={menuIcon.onclick}/>
-                </div> : <></>
+                isMobile && <div>
+                    <img src={menuIcon.src} alt="icon" onClick={menuIcon.onclick} />
+                </div>
             }
             {
-                (openedMenu || !isMobile) ? (
+                (openedMenu || !isMobile) && (
                     <Nav>
                         <ul>
                         {
@@ -57,7 +57,7 @@ export function NavMenu() {
                             }
                         </ul>
                     </Nav>
-                ) : <></>
+                )
             }
         </Container>
     )

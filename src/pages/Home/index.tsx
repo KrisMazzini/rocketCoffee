@@ -1,5 +1,5 @@
 import { Container } from "./styles"
-import { Blur } from "../../components/Blur"
+import { Blur } from "../../components/Blur/styles"
 import { Menu } from "../../components/Menu"
 
 export function Home() {

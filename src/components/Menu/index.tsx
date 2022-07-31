@@ -48,7 +48,7 @@ export function Menu() {
             <img src={settings.src} alt="Logo" />
             <NavMenu />
             {
-                isSmallDesktop ? <></> : <Button>Grab my coffee</Button>
+                !isSmallDesktop && <Button>Grab my coffee</Button>
             }
         </Container>
     )
