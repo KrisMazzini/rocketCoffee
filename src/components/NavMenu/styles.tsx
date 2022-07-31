@@ -1,36 +1,21 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-    div {
-        width: 48px;
-        height: 48px;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        position: fixed;
-        top: 30px;
-        right: 20px;
-    }
-    
-    div > img {
-        cursor: pointer;
-        position: static;
-    }
-`
-
 export const DesktopNav = styled.nav`
+    width: 430px;
     font-weight: 500;
     font-size: 14px;
     line-height: 19px;
     letter-spacing: 0.02em;
 
+    position: absolute;
+    left: calc((100% - 430px) / 2);
+
     color: var(--text-color);
 
     ul {
+        width: 100%;
         display: flex;
-        gap: 33px;
+        justify-content: space-between;
     }
 
     a {
@@ -39,8 +24,8 @@ export const DesktopNav = styled.nav`
 `
 
 export const MobileNav = styled.nav`
+    width: 100%;
     min-height: 100vh;
-    min-width: 100vw;
 
     font-weight: 400;
     font-size: 18px;
@@ -49,10 +34,9 @@ export const MobileNav = styled.nav`
     background-color: var(--background);
     color: var(--border-menu-mobile);
 
-    position: fixed;
-    top: 104px;
-    bottom: 0;
-    right: 0;
+    flex: 1 0 100%;
+
+    margin-top: 26px;
 
     ul {
         display: flex;

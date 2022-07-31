@@ -1,4 +1,6 @@
-import { Container } from "./styles"
+import { useState } from "react"
+
+import { DesktopContainer, MobileContainer } from "./styles"
 import { NavMenu } from "../NavMenu"
 import { Button } from "../Button/styles"
 
@@ -7,46 +9,58 @@ import { useWindowSize } from "../../utils/windowSize"
 
 import desktopLogo from "../../assets/logo-desktop.svg"
 import mobileLogo from "../../assets/logo-mobile.svg"
+import openMenuIcon from "../../assets/menu-buguer-open.svg"
+import closeMenuIcon from "../../assets/menu-buguer-close.svg"
 
-export type Props = {
-    src?: string;
-    positionTop?: string;
-    positionLeft: string;
+import { Desktop } from "./styles"
+
+type Icon = {
+    src: string,
+    onclick(): void,
 }
 
 export function Menu() {
+    const [openedMenu, setOpenedMenu] = useState<boolean>(false)
+    const [menuIcon, setMenuIcon] = useState<Icon>({
+        src: openMenuIcon,
+        onclick: openMenu,
+    })
+
     const isMobile = useWindowSize().width < mobile.maxWidth
     const isSmallDesktop = useWindowSize().width < smallDesktop.maxWidth
 
-    function getSettings():Props {
-        if (isMobile) {
-            return {
-                src: mobileLogo,
-                positionLeft: "20px",
-            }
-        }
-
-        if (isSmallDesktop) {
-            return {
-                src: desktopLogo,
-                positionLeft: "26px",
-                positionTop: "21px",
-            }
-        }
-
-        return {
-            src: desktopLogo,
-            positionLeft: "21%",
-            positionTop: "21px",
-        }
+    function openMenu():void {
+        setOpenedMenu(true)
+        setMenuIcon({
+            src: closeMenuIcon,
+            onclick: closeMenu,
+        })
     }
 
-    const settings:Props = getSettings()
+    function closeMenu():void {
+        setOpenedMenu(false)
+        setMenuIcon({
+            src: openMenuIcon,
+            onclick: openMenu,
+        })
+    }
+
+    const logo:string = isMobile ? mobileLogo : desktopLogo
+    const Container = isMobile ? MobileContainer : DesktopContainer
     
     return (
-        <Container positionLeft={settings.positionLeft} positionTop={settings.positionTop}>
-            <img src={settings.src} alt="Logo" />
-            <NavMenu />
+        <Container margin={(isMobile || isSmallDesktop) ? "0 20px" : "0 8%"} >
+            <img src={logo} alt="Logo" />
+            {
+                isMobile && (
+                    <button onClick={menuIcon.onclick}><img src={menuIcon.src} alt="Icon" /></button>
+                )
+            }
+            {
+                (!isMobile || openedMenu) && (
+                    <NavMenu />
+                )
+            }
             {
                 !isSmallDesktop && <Button>Grab my coffee</Button>
             }

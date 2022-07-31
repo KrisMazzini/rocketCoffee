@@ -1,25 +1,51 @@
 import styled from "styled-components";
 
-import { Props } from ".";
+export type Desktop = {
+    margin: string;
+}
 
-export const Container = styled.div`
+export const DesktopContainer = styled.div`
     height: 50px;
 
-    margin-top: ${(props:Props) => props.positionTop || 0};
+    margin-top: 50px;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+
+    img, button {
+        margin: ${(props:Desktop) => props.margin};
+    }
+
+`
+
+export const MobileContainer = styled.div`
+    min-height: 48px;
+
+    margin-top: 30px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
 
     position: relative;
 
-    img {
-        position: absolute;
-        left: ${(props:Props) => props.positionLeft};
+    button {
+        width: 48px;
+        height: 48px;
+
+        margin: ${(props:Desktop) => props.margin};
+
+        border: none;
+        outline: none;
+
+        background-color: #fff0;
+
+        cursor: pointer;
     }
 
-    button {
-        position: absolute;
-        right: 12%;
+    img {
+        margin: ${(props:Desktop) => props.margin};
     }
 `
