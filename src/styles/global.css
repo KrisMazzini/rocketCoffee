@@ -8,14 +8,20 @@
     --text-color-menu-mobile: #E1E1E6;
 }
 
+html {
+    background-color: var(--background);
+}
+
 html * {
     box-sizing: border-box;
     font-family: 'Manrope', sans-serif;
 }
 
-body {
+#root {
     min-height: 100vh;
-    background-color: var(--background);
+
+    display: flex;
+    flex-direction: column;
 }
 
 * img::selection, * img:active {
