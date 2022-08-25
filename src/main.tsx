@@ -20,7 +20,7 @@ function App() {
       return "mobile"
     }
 
-    if (windowWidth < 900) {
+    if (windowWidth < 1000) {
       return "tablet"
     }
 
