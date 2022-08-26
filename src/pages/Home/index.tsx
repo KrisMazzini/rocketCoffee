@@ -1,3 +1,5 @@
+import { useContext } from "react"
+import { WindowContext } from "../../contexts/WindowContext"
 import styled from "styled-components"
 import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
@@ -5,16 +7,26 @@ import arrow from "../../assets/arrow.svg"
 import rocketCoffee from "../../assets/rocket-coffee.png"
 import blur from "../../assets/blur-mobile.png"
 
+type mainProps = {
+    textSize: number;
+}
+
 export function Home() {
+    const windowSize = useContext<string>(WindowContext)
+    const textSize = windowSize === "mobile" ? 50 : 80;
     return (
         <>
             <Header />
-            <Main>
-                <p>The coffee that will make your code take off to the next level.</p>
-                <Button>
-                    <span>Grab my coffee</span>
-                    <img src={arrow} alt="" />
-                </Button>
+            <Main textSize={textSize} >
+                {
+                    windowSize === "mobile" && <>
+                        <p>The coffee that will make your code take off to the next level.</p>
+                        <Button>
+                            <span>Grab my coffee</span>
+                            <img src={arrow} alt="" />
+                        </Button>
+                    </>
+                }
                 <h1>Great Coffee<br/>
                 <span>&lt;Great Code/&gt;</span></h1>
                 <img src={rocketCoffee} alt="Rocket Coffee" />
@@ -54,8 +66,8 @@ const Main = styled.main`
         margin-top: 11.8%;
 
         font-weight: 700;
-        font-size: 50px;
-        line-height: 68px;
+        font-size: ${(props:mainProps) => props.textSize + "px"};
+        line-height: ${(props:mainProps) => (props.textSize * 1.36) + "px"};
         letter-spacing: -0.03em;
 
         text-align: center;
@@ -70,7 +82,7 @@ const Main = styled.main`
 
     > img { 
         margin-top: 3%;
-        max-width: 428px;
+        max-width: 800px;
         width: 100%;
     }
 `
