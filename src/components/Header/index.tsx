@@ -18,7 +18,11 @@ export function Header() {
     return (
         <MobileHeader>
             <img src={mobileLogo} alt="Logo" />
-            <img src={navIcon} alt="Navbar Icon" onClick={() => setNavbarHidden(!navbarHidden)}/>
+            <img src={navIcon} alt="Navbar Icon" onClick={() => {
+                if (setNavbarHidden) {
+                    setNavbarHidden(!navbarHidden)
+                }
+            }}/>
         </MobileHeader>
     )
 }
