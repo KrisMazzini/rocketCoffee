@@ -4,6 +4,7 @@ import { NavigationContext } from "../../contexts/NavigationContext"
 import styled from "styled-components"
 import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
+import { Navigation } from "../../components/Navigation"
 import arrow from "../../assets/arrow.svg"
 import rocketCoffee from "../../assets/rocket-coffee.png"
 import centerBlur from "../../assets/blur-mobile.png"
@@ -39,20 +40,23 @@ export function Home() {
     return (
         <Container background={background} backgroundSize={backgroundSize}>
             <Header />
-            <Main maxImgWidth={maxImgWidth} textSize={textSize} >
-                {
-                    windowSize !== "desktop" && <>
-                        <p>The coffee that will make your code take off to the next level.</p>
-                        <Button>
-                            <span>Grab my coffee</span>
-                            <img src={arrow} alt="" />
-                        </Button>
-                    </>
-                }
-                <h1>Great Coffee<br/>
-                <span>&lt;Great Code/&gt;</span></h1>
-                <img src={rocketCoffee} alt="Rocket Coffee" />
-            </Main>
+            {
+            navbarHidden ?
+                <Main maxImgWidth={maxImgWidth} textSize={textSize} >
+                    {
+                        windowSize !== "desktop" && <>
+                            <p>The coffee that will make your code take off to the next level.</p>
+                            <Button>
+                                <span>Grab my coffee</span>
+                                <img src={arrow} alt="" />
+                            </Button>
+                        </>
+                    }
+                    <h1>Great Coffee<br/>
+                    <span>&lt;Great Code/&gt;</span></h1>
+                    <img src={rocketCoffee} alt="Rocket Coffee" />
+                </Main> : <Navigation />
+            }
         </Container>
     )
 }
