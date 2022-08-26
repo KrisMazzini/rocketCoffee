@@ -8,18 +8,20 @@ import rocketCoffee from "../../assets/rocket-coffee.png"
 import blur from "../../assets/blur-mobile.png"
 
 type mainProps = {
+    maxImgWidth: string;
     textSize: number;
 }
 
 export function Home() {
     const windowSize = useContext<string>(WindowContext)
-    const textSize = windowSize === "mobile" ? 50 : 80;
+    const textSize = windowSize === "desktop" ? 80 : 50;
+    const maxImgWidth = windowSize === "desktop" ? "800px" : "428px";
     return (
         <>
             <Header />
-            <Main textSize={textSize} >
+            <Main maxImgWidth={maxImgWidth} textSize={textSize} >
                 {
-                    windowSize === "mobile" && <>
+                    windowSize !== "desktop" && <>
                         <p>The coffee that will make your code take off to the next level.</p>
                         <Button>
                             <span>Grab my coffee</span>
@@ -36,9 +38,10 @@ export function Home() {
 }
 
 const Main = styled.main`
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 
     flex-grow: 1;
@@ -58,13 +61,7 @@ const Main = styled.main`
         color: var(--text-color);
     }
 
-    button {
-        margin-top: 10.5%;
-    }
-
     h1 {
-        margin-top: 11.8%;
-
         font-weight: 700;
         font-size: ${(props:mainProps) => props.textSize + "px"};
         line-height: ${(props:mainProps) => (props.textSize * 1.36) + "px"};
@@ -75,14 +72,17 @@ const Main = styled.main`
         color: var(--text-color);
     }
 
+    > button {
+        margin: 10px 0;
+    }
+
     h1 > span {
         color: var(--background);
         text-shadow: -1px -1px 0 var(--button), 1px -1px 0 var(--button), -1px 1px 0 var(--button), 1px 1px 0 var(--button);
     }
 
-    > img { 
-        margin-top: 3%;
-        max-width: 800px;
+    > img {
+        max-width: ${(props:mainProps) => props.maxImgWidth};
         width: 100%;
     }
 `

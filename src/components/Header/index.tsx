@@ -23,4 +23,6 @@ const MobileHeader = styled.header`
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+
+    overflow: hidden;
 `
