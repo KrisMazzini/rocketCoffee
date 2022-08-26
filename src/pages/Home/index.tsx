@@ -5,19 +5,37 @@ import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
 import arrow from "../../assets/arrow.svg"
 import rocketCoffee from "../../assets/rocket-coffee.png"
-import blur from "../../assets/blur-mobile.png"
+import centerBlur from "../../assets/blur-mobile.png"
+import bottomBlur from "../../assets/blur-1.png"
+import topBlur from "../../assets/blur-2.png"
 
-type mainProps = {
+type ContainerProps = {
+    background: string;
+    backgroundSize: string;
+}
+
+type MainProps = {
     maxImgWidth: string;
     textSize: number;
 }
 
 export function Home() {
     const windowSize = useContext<string>(WindowContext)
-    const textSize = windowSize === "desktop" ? 80 : 50;
-    const maxImgWidth = windowSize === "desktop" ? "800px" : "428px";
+
+    const [textSize, maxImgWidth, background, backgroundSize] = windowSize === "desktop" ? [
+        80,
+        "800px",
+        `url(${bottomBlur}) no-repeat bottom left, url(${topBlur}) no-repeat top right`,
+        "70% auto"
+    ] : [
+        50,
+        "428px",
+        `url(${centerBlur}) no-repeat bottom center`,
+        "100% auto"
+    ]
+    
     return (
-        <>
+        <Container background={background} backgroundSize={backgroundSize}>
             <Header />
             <Main maxImgWidth={maxImgWidth} textSize={textSize} >
                 {
@@ -33,9 +51,19 @@ export function Home() {
                 <span>&lt;Great Code/&gt;</span></h1>
                 <img src={rocketCoffee} alt="Rocket Coffee" />
             </Main>
-        </>
+        </Container>
     )
 }
+
+const Container = styled.div`
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background: ${(props:ContainerProps) => props.background};
+    background-size: ${(props:ContainerProps) => props.backgroundSize};
+`
 
 const Main = styled.main`
     padding-top: 20px;
@@ -45,9 +73,6 @@ const Main = styled.main`
     align-items: center;
 
     flex-grow: 1;
-
-    background: url(${blur}) no-repeat bottom center;
-    background-size: 100% auto;
 
     > p {
         max-width: 373px;
@@ -63,8 +88,8 @@ const Main = styled.main`
 
     h1 {
         font-weight: 700;
-        font-size: ${(props:mainProps) => props.textSize + "px"};
-        line-height: ${(props:mainProps) => (props.textSize * 1.36) + "px"};
+        font-size: ${(props:MainProps) => props.textSize + "px"};
+        line-height: ${(props:MainProps) => (props.textSize * 1.36) + "px"};
         letter-spacing: -0.03em;
 
         text-align: center;
@@ -82,7 +107,7 @@ const Main = styled.main`
     }
 
     > img {
-        max-width: ${(props:mainProps) => props.maxImgWidth};
+        max-width: ${(props:MainProps) => props.maxImgWidth};
         width: 100%;
     }
 `

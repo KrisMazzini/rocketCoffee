@@ -19,9 +19,6 @@ html * {
 
 #root {
     min-height: 100vh;
-
-    display: flex;
-    flex-direction: column;
 }
 
 * img::selection, * img:active {
