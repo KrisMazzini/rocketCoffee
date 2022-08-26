@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { WindowContext } from "../../contexts/WindowContext"
+import { NavigationContext } from "../../contexts/NavigationContext"
 import styled from "styled-components"
 import { Header } from "../../components/Header"
 import { Button } from "../../components/Button"
@@ -21,6 +22,7 @@ type MainProps = {
 
 export function Home() {
     const windowSize = useContext<string>(WindowContext)
+    const { navbarHidden, setNavbarHidden } = useContext(NavigationContext)
 
     const [textSize, maxImgWidth, background, backgroundSize] = windowSize === "desktop" ? [
         80,

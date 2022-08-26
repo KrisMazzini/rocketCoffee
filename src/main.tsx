@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import ReactDOM from 'react-dom/client'
 import { Home } from './pages/Home'
 import { WindowContext } from './contexts/WindowContext'
+import { NavigationContext } from './contexts/NavigationContext'
 import './styles/global.css'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -12,6 +13,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
 
 function App() {
   const [windowSize, setWindowSize] = useState<string>(getWindowSize())
+  const [navbarHidden, setNavbarHidden] = useState<boolean>(true)
 
   function getWindowSize() {
     const { innerWidth: windowWidth } = window
@@ -38,7 +40,9 @@ function App() {
 
   return (
     <WindowContext.Provider value={windowSize}>
-      <Home />
+      <NavigationContext.Provider value={{navbarHidden, setNavbarHidden}}>
+        <Home />
+      </NavigationContext.Provider>
     </WindowContext.Provider>
   )
 }

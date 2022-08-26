@@ -1,13 +1,24 @@
+import { useContext, useState, useEffect } from "react";
+import { NavigationContext } from "../../contexts/NavigationContext";
 import styled from "styled-components";
 
 import mobileLogo from "../../assets/logo-mobile.svg"
 import openMenu from "../../assets/menu-buguer-open.svg"
+import closeMenu from "../../assets/menu-buguer-close.svg"
 
 export function Header() {
+    const { navbarHidden, setNavbarHidden } = useContext(NavigationContext)
+    const [navIcon, setNavIcon] = useState<string>(openMenu)
+
+    useEffect(() => {
+        const icon = navbarHidden ? openMenu : closeMenu
+        setNavIcon(icon)
+    }, [navbarHidden])
+
     return (
         <MobileHeader>
             <img src={mobileLogo} alt="Logo" />
-            <img src={openMenu} alt="Open Menu" />
+            <img src={navIcon} alt="Navbar Icon" onClick={() => setNavbarHidden(!navbarHidden)}/>
         </MobileHeader>
     )
 }
@@ -25,4 +36,8 @@ const MobileHeader = styled.header`
     gap: 10px;
 
     overflow: hidden;
+
+    > img {
+        cursor: pointer;
+    }
 `
