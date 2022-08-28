@@ -3,6 +3,8 @@ import styled from "styled-components"
 export function Navigation() {
     const navItems:string[] = ["home", "menu", "rewards", "gift cards", "stores"]
     
+    const Navbar = MobileNavbar
+
     return (
         <Navbar>
             <ul>
@@ -14,7 +16,7 @@ export function Navigation() {
     )
 }
 
-const Navbar = styled.nav`
+const MobileNavbar = styled.nav`
     flex-grow: 1;
     background-color: var(--background);
     
@@ -35,6 +37,8 @@ const Navbar = styled.nav`
         font-weight: 400;
         font-size: 18px;
         line-height: 25px;
+
+        cursor: pointer;
         
         text-transform: capitalize;
         color: var(--text-menu-mobile);

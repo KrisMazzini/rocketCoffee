@@ -1,14 +1,19 @@
 import { useContext, useState, useEffect } from "react";
+import { WindowContext } from "../../contexts/WindowContext";
 import { NavigationContext } from "../../contexts/NavigationContext";
 import styled from "styled-components";
 
+import desktopLogo from "../../assets/logo-desktop.svg"
 import mobileLogo from "../../assets/logo-mobile.svg"
 import openMenu from "../../assets/menu-buguer-open.svg"
 import closeMenu from "../../assets/menu-buguer-close.svg"
 
 export function Header() {
     const { navbarHidden, setNavbarHidden } = useContext(NavigationContext)
+    const windowSize = useContext(WindowContext)
     const [navIcon, setNavIcon] = useState<string>(openMenu)
+
+    const logo = windowSize === "mobile" ? mobileLogo : desktopLogo
 
     useEffect(() => {
         const icon = navbarHidden ? openMenu : closeMenu
@@ -17,7 +22,7 @@ export function Header() {
 
     return (
         <MobileHeader>
-            <img src={mobileLogo} alt="Logo" />
+            <img src={logo} alt="Logo" />
             <img src={navIcon} alt="Navbar Icon" onClick={() => {
                 if (setNavbarHidden) {
                     setNavbarHidden(!navbarHidden)
