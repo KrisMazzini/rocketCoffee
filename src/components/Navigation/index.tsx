@@ -1,9 +1,13 @@
+import { useContext } from "react"
+import { WindowContext } from "../../contexts/WindowContext"
 import styled from "styled-components"
 
 export function Navigation() {
     const navItems:string[] = ["home", "menu", "rewards", "gift cards", "stores"]
+
+    const windowSize = useContext(WindowContext)
     
-    const Navbar = MobileNavbar
+    const Navbar = windowSize === "mobile" ? MobileNavbar : DesktopNavbar
 
     return (
         <Navbar>
@@ -16,7 +20,36 @@ export function Navigation() {
     )
 }
 
+const DesktopNavbar = styled.nav`
+    width: 432px;
+    
+    position: fixed;
+
+    margin-left: calc((100% - 432px)/2);
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    li {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 19px;
+        letter-spacing: 0.02em;
+
+        cursor: pointer;
+        
+        text-transform: capitalize;
+
+        color: var(--text-color);
+    }
+`
+
 const MobileNavbar = styled.nav`
+    margin-top: 95.5px;
+
     flex-grow: 1;
     background-color: var(--background);
     

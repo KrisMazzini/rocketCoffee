@@ -72,6 +72,7 @@ const Container = styled.div`
 `
 
 const Main = styled.main`
+    margin-top: 95.5px;
     padding-top: 20px;
     display: flex;
     flex-direction: column;

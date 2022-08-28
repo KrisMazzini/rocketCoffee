@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type Props = {
-    children: JSX.Element[];
+    children: JSX.Element | JSX.Element[];
 }
 
 export function Button(props:Props) {
