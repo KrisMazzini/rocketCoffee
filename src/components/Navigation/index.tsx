@@ -27,6 +27,17 @@ const DesktopNavbar = styled.nav`
 
     margin-left: calc((100% - 432px)/2);
 
+    @keyframes fadein {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    animation: fadein 0.5s linear;
+
     ul {
         display: flex;
         justify-content: space-between;
@@ -52,6 +63,16 @@ const MobileNavbar = styled.nav`
 
     flex-grow: 1;
     background-color: var(--background);
+
+    @keyframes dropdown {
+        from {
+            margin-top: -20%;
+        }
+
+        to {
+            margin-top: 0;
+        }
+    }
     
     ul {
         display: flex;
@@ -75,6 +96,8 @@ const MobileNavbar = styled.nav`
         
         text-transform: capitalize;
         color: var(--text-menu-mobile);
+
+        animation: dropdown 0.5s linear;
     }
 
     li:hover {
