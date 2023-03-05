@@ -1,4 +1,4 @@
-# Project Name <img height=30 align="right" src="https://user-images.githubusercontent.com/93556620/222935912-824874df-03ba-40a9-9ef2-4195f1e823e8.png">
+# Rocket Coffee <img height=30 align="right" src="https://user-images.githubusercontent.com/93556620/222935912-824874df-03ba-40a9-9ef2-4195f1e823e8.png">
 
 <img width="1280" alt="Social Preview" src="https://user-images.githubusercontent.com/93556620/222935935-3679f487-243f-4e54-aaaf-0dc270fb6676.png">
 
